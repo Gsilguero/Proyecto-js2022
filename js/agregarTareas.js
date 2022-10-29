@@ -47,3 +47,9 @@ function ButtonBorrar () {
     return Borrar;
 
 }
+
+document.getElementById("borrarTodas").addEventListener("click", () => {
+    ul.innerHTML = ""
+})
+
+

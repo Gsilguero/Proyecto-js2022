@@ -5,11 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de tareas</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    
+<h2 class="title">Turnos calendario</h2>
+
+<div class="calendar">
+    <div class="calendar__info">
+        <div class="calendar__prev" id="prev-month">&#9664;</div>
+        <div class="calendar__month" id="month"></div>
+        <div class="calendar__year" id="year"></div>
+        <div class="calendar__next" id="next-month">&#9654;</div>
+    </div>
+
+    <div class="calendar__week">
+        <div class="calendar__day calendar__item">Mon</div>
+        <div class="calendar__day calendar__item">Tue</div>
+        <div class="calendar__day calendar__item">Wed</div>
+        <div class="calendar__day calendar__item">Thu</div>
+        <div class="calendar__day calendar__item">Fri</div>
+        <div class="calendar__day calendar__item">Sat</div>
+        <div class="calendar__day calendar__item">Sun</div>
+    </div>
+
+    <div class="calendar__dates" id="dates"></div>
+</div>
+
+<script src="js/turnos.js"></script>
+
+
+
+
+
     <div class="contenedor">
-        <h1>Lista de que haceres</h1>
+        <h1 id="tituloLISTA">Lista de que haceres</h1>
+
+        <button id="borrarTodas">Borrar todas las tareas</button>
+        
         <div class="buscador">
             <form action="">
                 <input type="text" placeholder="Nueva tarea..." name="" id="">
@@ -28,5 +63,8 @@
 <script src="js/agregarTareas.js"> </script>
 
 
+
 </body>
 </html>
+
+
