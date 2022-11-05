@@ -1,55 +1,48 @@
-const input = document.querySelector("input");
-const ADDbutton = document.querySelector(".ADDbutton");
-const ul = document.querySelector("ul");
-const VACIO = document.querySelector(".VACIO");
+const input = document.querySelector(".Boton-input");
+const tasklist = document.querySelector(".listadetareas ul");
+const mensaje = document.querySelector(".listadetareas");
 
-ADDbutton.addEventListener("click", (e)=> 
+let tareas = []
 
-    {
-        e.preventDefault();
 
-        const text = input.value;
-        if (text !== "") {  
 
-        const li = document.createElement("li");
-        const p = document.createElement("p");
-        p.textContent = text;
-        li.appendChild(p);
-        li.appendChild(ButtonBorrar());
-        ul.appendChild(li);
+function agregartarea (){
+    const tarea = input.value;
+    if ( tarea === "") {
 
-        input.value = "";
-        VACIO.style.display = "none";
-        } 
+        showError("Esta tarea esta VACIA...");
+        return;
+    }
+    const TareaOBJ = {
+        tarea,
+        id: Date.now()
+    }
+    tarea = [...tarea, TareaOBJ]
+
+    createHTML ()
+}
+function createHTML(){
+    if (tarea.length > 0) {
+        tarea.forEach (tarea => {
+            const li = document.createElement("li");
+            li.innerHTML = '${tarea.tarea} <span tarea-id="${tarea.id}" >X</span>';
+            
+            listadetareas.appendChild(li);
+        });
+
     }
 
-);
-
-function ButtonBorrar () {
-    const Borrar = document.createElement("button");
-    Borrar.textContent = "—";
-    Borrar.className = "quit";
-
-    Borrar.addEventListener("click", (e) => 
-    
-        {
-            const itemB = e.target.parentElement; 
-            ul.removeChild(itemB);
-            const itemC = document.querySelectorAll("li");
-            
-            if (itemC.length === 0) {
-                VACIO.style.display = "block";
-            }
-
-        }
-    )
-    
-    return Borrar;
-
 }
+function showError (error){
+    const mensajeERROR = document.createElement ("p");
+    mensajeERROR.textContent = error;
+    mensajeERROR.classList.add ("error");
+    mensaje.appendChild(mensajeERROR);
+    setTimeout(() => { 
+        mensajeERROR.remove();
+    },1800);
 
-document.getElementById("borrarTodas").addEventListener("click", () => {
-    ul.innerHTML = ""
-})
 
 
+    console.log (error)
+}

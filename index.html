@@ -38,28 +38,27 @@
 
 
 
-
-
-    <div class="contenedor">
-        <h1 id="tituloLISTA">Lista de que haceres</h1>
-
-        <button id="borrarTodas">Borrar todas las tareas</button>
-        
-        <div class="buscador">
-            <form action="">
-                <input type="text" placeholder="Nueva tarea..." name="" id="">
-                <button class="ADDbutton">+</button>
-            </form>
-        </div>
-        <div class="contenedor-lista">
-            <ul>
-
-            </ul>
-        </div>
-        <div class="VACIO">
-            <p> No hay que haceres, estas de chill...</p>
-        </div>
+<div class="SeccionLista">
+    
+    <h2>LISTA DE QUE HACERES</h2>
+    <div class="Boton-input">
+        <input type="text">
+        <button onclick="addTasks()">Agregar Tarea</button>
     </div>
+    <div class="ListaDeTareas">
+        <ul>
+            <!--------- <li>name of task more content <span>X</span></li>
+            <li>name of task more content <span>X</span></li>
+            <li>name of task more content <span>X</span></li>
+            <li>name of task more content <span>X</span></li> ------------>
+        </ul>
+    </div>
+    <button class="ELIMINAR-TODO onclick="deleteAll()">Borrar lista</button>
+</div>
+
+
+
+
 <script src="js/agregarTareas.js"> </script>
 
 
