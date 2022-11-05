@@ -2,7 +2,7 @@ const input = document.querySelector(".Boton-input");
 const tasklist = document.querySelector(".listadetareas ul");
 const mensaje = document.querySelector(".listadetareas");
 
-let tareas = []
+let tareaSs = [];
 
 
 
@@ -17,17 +17,17 @@ function agregartarea (){
         tarea,
         id: Date.now()
     }
-    tarea = [...tarea, TareaOBJ]
+    tareaSs = [...tareaSs, TareaOBJ]
 
     createHTML ()
 }
 function createHTML(){
-    if (tarea.length > 0) {
-        tarea.forEach (tarea => {
+    if (tareaSs.length > 0) {
+        tareaSs.forEach (tarea => {
             const li = document.createElement("li");
             li.innerHTML = '${tarea.tarea} <span tarea-id="${tarea.id}" >X</span>';
             
-            listadetareas.appendChild(li);
+            tasklist.appendChild(li);
         });
 
     }
@@ -39,7 +39,7 @@ function showError (error){
     mensajeERROR.classList.add ("error");
     mensaje.appendChild(mensajeERROR);
     setTimeout(() => { 
-        mensajeERROR.remove();
+    mensajeERROR.remove();
     },1800);
 
 
