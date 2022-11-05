@@ -1,13 +1,40 @@
-const input = document.querySelector(".Boton-input");
-const tasklist = document.querySelector(".listadetareas ul");
-const mensaje = document.querySelector(".listadetareas");
+const input = document.querySelector("#input-tarea");
+const tasklist = document.querySelector("#listadetareas");
+const mensaje = document.querySelector("#listadetareas");
 
 let tareaSs = [];
 
 
 
+eventListeners(); 
+
+
+function eventListeners (){
+    document.addEventListener("DOMContentLoaded", () => {
+
+        tareaSs = JSON.parse(localStorage.getItem("tareaSs")) || [];
+    
+        createHTML(); 
+
+    });
+
+    tasklist.addEventListener("click", borrrarTarea);
+
+}
+
+function borrarTarea (e){
+
+    if (e.target.tagName == "SPAN") {
+        const BorrarID = parseInt(e.target.getAttribute("tarea-id"));
+        tareaSs = tareaSs.filter(task => tarea.id !== BorrarID);
+        createHTML();
+    }
+}
+
+
 function agregartarea (){
     const tarea = input.value;
+
     if ( tarea === "") {
 
         showError("Esta tarea esta VACIA...");
@@ -19,25 +46,59 @@ function agregartarea (){
     }
     tareaSs = [...tareaSs, TareaOBJ]
 
+
     createHTML ()
+    input.value = "";
 }
 function createHTML(){
     if (tareaSs.length > 0) {
         tareaSs.forEach (tarea => {
             const li = document.createElement("li");
-            li.innerHTML = '${tarea.tarea} <span tarea-id="${tarea.id}" >X</span>';
+            li.innerHTML = `${tarea.tarea} <span tarea-id="${tarea.id}" >X</span>`;
             
             tasklist.appendChild(li);
         });
 
     }
 
+    sincronizationStorage();
+
 }
+
+
+
+
+
+
+
+
+
+function sincronizationStorage (){
+    localStorage.setItem("tareaSs", JSON.stringify(tareaSs));
+}
+
+
+
+
+
+
+
+
+
+
+function BorrarTODO (){  
+
+    tareaSs = [];
+    createHTML();
+
+}
+
+
 function showError (error){
     const mensajeERROR = document.createElement ("p");
     mensajeERROR.textContent = error;
     mensajeERROR.classList.add ("error");
-    mensaje.appendChild(mensajeERROR);
+    tasklist.appendChild(mensajeERROR);
     setTimeout(() => { 
     mensajeERROR.remove();
     },1800);
@@ -45,4 +106,9 @@ function showError (error){
 
 
     console.log (error)
+}
+
+
+function clearHTML (){
+listadetareas.innerHTML = "";
 }
