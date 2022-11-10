@@ -1,6 +1,6 @@
 const input = document.querySelector("#input-tarea");
 const tasklist = document.querySelector("#listadetareas");
-const mensaje = document.querySelector("#listadetareas");
+///const mensaje = document.querySelector("#listadetareas");
 
 let tareaSs = [];
 
@@ -50,7 +50,14 @@ function agregartarea (){
     createHTML ()
     input.value = "";
 }
+
+
+
+
 function createHTML(){
+
+    clearHTML();
+    
     if (tareaSs.length > 0) {
         tareaSs.forEach (tarea => {
             const li = document.createElement("li");
@@ -110,5 +117,7 @@ function showError (error){
 
 
 function clearHTML (){
+
 listadetareas.innerHTML = "";
+
 }
