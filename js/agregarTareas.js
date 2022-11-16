@@ -18,7 +18,7 @@ function eventListeners (){
 
     });
 
-    tasklist.addEventListener("click", borrrarTarea);
+    tasklist.addEventListener("click", borrarTarea);
 
 }
 
@@ -26,10 +26,32 @@ function borrarTarea (e){
 
     if (e.target.tagName == "SPAN") {
         const BorrarID = parseInt(e.target.getAttribute("tarea-id"));
-        tareaSs = tareaSs.filter(task => tarea.id !== BorrarID);
+        tareaSs = tareaSs.filter(tarea => tarea.id !== BorrarID);
         createHTML();
+
+
+
     }
 }
+
+
+
+
+/******function ADDbotonBORRAR () {
+    const BORRARbtn = document.createElement("boton");
+
+    BORRARbtn.textContent = "X";
+    BORRARbtn.className = "BORRARbtn";
+
+    BORRARbtn.addEventListener("click", (e) => {
+        const item = e.target.parentElement;
+    ul.removeChild(item);
+});
+
+    return BORRARbtn
+
+
+ } ********/
 
 
 function agregartarea (){
